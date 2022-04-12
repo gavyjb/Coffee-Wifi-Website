@@ -1,0 +1,183 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+}
+
+/* Navigation Bar */
+.navbar-brand {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+/* Header styles */
+.intro {
+   color: white;
+   width: 100%;
+   min-height: 50%;
+   background-size: cover;
+   padding: 10vw 0;
+}
+.main-pic {
+   background: linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.6)), url('/static/img/no-revisions-d1ngW7SNehM-unsplash.jpg');
+
+}
+#place-info {
+   height: 100%;
+   padding: 15vw 0 0 0;
+   text-align: start;
+}
+
+/* Headings */
+.big-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+.medium-heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.small-heading {
+  font-size: 2rem;
+  font-weight: 400;
+
+}
+.section-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  color: black;
+}
+
+/* Sections */
+.regular-content {
+  min-height: 50%;
+  padding: 10vw 0;
+}
+.left-section {
+  padding: 0 0 0 5vw;
+}
+.right-section {
+  padding: 0 5vw 0 0;
+}
+
+.place {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.place:link {
+  text-decoration: none;
+  color: #696969;
+}
+.place:hover {
+  text-decoration: none;
+  color: #00008B;
+}
+.place:visited {
+  text-decoration: none;
+  color: #696969;
+}
+#place-details {
+  margin: 1.5rem 0 5rem 0;
+}
+
+#place-details hr {
+  margin: 1.4rem 0;
+  width: 90%
+}
+#place-details h3  {
+   font-size: 1.2rem;
+   font-weight: 700;
+   text-align: start;
+}
+
+.good {
+   color: green;
+   padding: 0 10px 0;
+   font-size: 1.2rem;
+}
+.not-good {
+   color: red;
+   padding: 0 10px 0;
+   font-size: 1.2rem;
+}
+.table{
+    width: 100%;
+}
+.feature {
+    text-align: start;
+    width: 50%;
+}
+.content {
+    padding: 5% 0 2% 0;
+}
+
+.review-list {
+    padding: 0;
+    list-style: none;
+    max-height: 200px;
+    overflow: auto;
+    margin: 0;
+}
+
+.review-list li {
+    margin:0;
+    margin-top:10px;
+    width: 100%;
+}
+
+.review-list li > div {
+    display: table-cell;
+}
+
+.author-img {
+    height: 100%;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+.author-img img {
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+.review-text {
+    text-align: start;
+    padding: 0 10px;
+}
+.sub-text {
+    color: #aaa;
+    font-family: verdana;
+    font-size: 11px;
+    font-style: italic;
+    text-align: start;
+    padding: 0 10px;
+}
+.btn-left {
+    float: left;
+    margin: 20px 0 0 0;
+}
+.warning {
+    color: red;
+}
+
+/* Footer Section */
+
+.footer-icon {
+  padding: 2% 1%;
+}
+
+/* Media Breakpoints */
+@media (max-width: 1028px){
+  .title-img {
+    position: static;
+    transform: rotate(0)
+  }
+
+  #title {
+    text-align: center;
+  }
+}

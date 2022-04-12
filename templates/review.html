@@ -1,0 +1,27 @@
+{% include "header.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+ <!-- Main Content -->
+  <header id="place-info" class="intro" style="background: linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.6)),
+		url({{ cafe.img_url }})">
+	  <div class="container-fluid">
+		  <div class="row align-items-end">
+			  <div class="col">
+		      <h1 class="medium-heading"> {{ cafe.name | upper }} </h1>
+			  </div>
+		  </div>
+	  </div>
+  </header>
+ <div class="container-fluid">
+	 <div class="row content">
+			 <div class="col-md-7 mx-auto">
+				 {{ ckeditor.load() }}
+				 {{ ckeditor.config(name='review') }}
+				 {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+			 </div>
+	 </div>
+ </div>
+
+
+
+{% include "footer.html" %}

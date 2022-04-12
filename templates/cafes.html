@@ -1,0 +1,35 @@
+{% include "header.html" %}
+
+ <!-- Main Content -->
+  <div class="container-fluid">
+	  <div class="row">
+		  <div id="places-list" class="col-lg-5 col-md-8">
+				<h2 class="section-heading">{{ city }}</h2><br>
+			  <p>The best venues for work or study in a friendly atmosphere! These venues have free and reliable Wi-Fi,
+			  many power sockets, and delicious coffee.  </p>
+			  <h2> {{ all_cafes|length }} WORK-FRIENDLY PLACES </h2>
+			  {% for cafe in all_cafes  %}
+			  <a id="{{ cafe.id }}" class="place" href="{{ url_for('place_details', cafe_id=cafe.id, city_name=city) }}">
+				  <div class="card mb-3" style="max-width: 540px;">
+				    <div class="row g-0">
+					    <div class="col-md-4">
+								<img alt="{{cafe.name}}" src="{{ cafe.img_url}}" width="150px">
+				      </div>
+					    <div class="col-md-8">
+					      <div class="card-body">
+						      <h5 class="card-title">{{ cafe.name | upper }}</h5>
+						      <p class="card-text"><i class="fas fa-location-crosshairs"></i>{{ cafe.location }}</p>
+					      </div>
+					    </div>
+				    </div>
+				  </div>
+			  </a>
+				  {% endfor %}
+		  </div>
+	  </div>
+  </div>
+
+
+
+
+{% include "footer.html" %}

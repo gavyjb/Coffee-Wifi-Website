@@ -1,0 +1,129 @@
+{% include "header.html" %}
+
+ <!-- Main Content -->
+  <header id="place-info" class="intro" style="background: linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.6)),
+		url({{ cafe.img_url }})">
+	  <div class="container-fluid">
+		  <div class="row align-items-end">
+			  <div class="col">
+		      <h1 class="medium-heading"> {{ cafe.name | upper }} </h1>
+			  </div>
+		  </div>
+	  </div>
+  </header>
+ <div id="place-details" class="container-fluid">
+	 <div class="row">
+			 <div class="col-md-7 left-section">
+				 <div class="row align-items-start">
+					 <div class="col-md-3">
+						 <h3>BEEN HERE</h3>
+					 </div>
+					 <div class="col-md-4 author-img">
+							{%- for review in cafe.reviews %}
+						    <img src="{{ review.author.email | gravatar(rating='pg', default='retro', size=50) }}">
+						  {% endfor -%}
+					 </div>
+					 <hr>
+					 </div>
+				 <div class="row align-items-start">
+					 <div class="col-md-3">
+					    <h3>REVIEWS</h3>
+					 </div>
+					 <div class="col-md-8">
+							{%- for review in cafe.reviews %}
+						  <ul class="review-list">
+                <li>
+                  <div class="author-img">
+                   <img src="{{ review.author.email | gravatar(rating='pg', default='retro', size=30) }}">
+                  </div>
+                  <div class="review-text">
+                    {{ review.text | safe }}
+                  </div>
+	                <div class="sub-text">
+		                <span>-{{ review.author.name }} </span>
+	                </div>
+                </li>
+              </ul>
+						  {% endfor -%}
+						  <a class="btn btn-info btn-left" href="{{ url_for('write_review', cafe_id=cafe.id, city_name=cafe.city_name) }}"><i class="fas fa-edit"></i> Write Review </a><br><br>
+					 </div>
+					 <hr>
+				 </div>
+				 <div class="row align-items-start">
+				  <div class="col-md-3">
+					  <h3>SPACE DETAILS</h3>
+				  </div>
+				  <div class="col-md-8">
+						 <div class="table-responsive">
+			          <table class="table  table-borderless">
+			           <tbody>
+			              <tr>
+			                <td class="feature"><i class="fas fa-plug"></i> Power Sockets
+			                  {% if cafe.has_sockets %}
+			                  <i class="fas fa-2xl fa-thumbs-up good"></i>
+			                  {% else %}
+			                  <i class="fas fa-2xl fa-thumbs-down not-good"></i>
+			                  {% endif %}
+			                </td>
+				              <td class="feature"><i class="fas fa-toilet"></i> Restrooms
+				                {% if cafe.has_toilet %}
+				                <i class="fas fa-2xl fa-thumbs-up good"></i>
+				                {% else %}
+				                <i class="fas fa-2xl fa-thumbs-down not-good"></i>
+				                {% endif %}
+				              </td>
+			              </tr>
+			              <tr>
+				              <td class="feature"><i class="fas fa-wifi"></i> Wifi
+				                {% if cafe.has_wifi %}
+				                <i class="fas fa-2xl fa-thumbs-up good"></i>
+				                {% else %}
+				                <i class="fas fa-2xl fa-thumbs-down not-good"></i>
+				                {% endif %}
+				              </td>
+				              <td class="feature"><i class="fas fa-phone"></i> Making Calls
+				                {% if cafe.can_take_calls %}
+				                <i class="fas fa-2xl fa-thumbs-up good"></i>
+				                {% else %}
+				                <i class="fas fa-2xl fa-thumbs-down not-good"></i>
+				                {% endif %}
+				              </td>
+					          </tr>
+					          <tr>
+				              <td class="feature"><i class="fas fa-chair"></i> Number of Seats:  {{ cafe.seats }}</td>
+				              <td class="feature"><i class="fas fa-coffee"></i> Coffee Price:  {{ cafe.coffee_price}}</td>
+					          </tr>
+			            </tbody>
+			          </table>
+							</div>
+					  </div>
+				 </div>
+			 </div>
+		 <div class="col-md-5 right-section">
+			 <i class="fas fa-map-marker-alt"></i> Map Location:
+			 <a href="{{ cafe.map_url }}">{{ cafe.location }}</a>
+			 <hr>
+			 <p>Suggest a great place to add!</p>
+			 <a class="btn btn-info" href="{{ url_for('add_place') }}"><i class="fas fa-plus"></i> SUGGEST PLACE</a><br><br>
+			 <hr>
+
+			 {% if cafe.is_closed %}
+			 {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="warning"> {{ message }} </p> <br><br>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+			 <p><i class="fas fa-ban not-good"></i>This location has been reported to be closed.  Pending admin delete. </p>
+			 {% else %}
+			 <p>Has this place shut down or moved to a different location?  </p>
+			 <a class="btn btn-info" href="{{ url_for('report_closed', cafe_id=cafe.id, city_name=cafe.city_name) }}"><i class="fas fa-door-closed"></i> REPORT CLOSED </a><br><br>
+			 {% endif %}
+		 </div>
+	 </div>
+ </div>
+
+
+
+{% include "footer.html" %}

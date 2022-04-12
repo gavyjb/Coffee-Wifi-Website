@@ -1,0 +1,24 @@
+{% include "header.html" %}
+
+  <!-- Header section -->
+  <header class="intro main-pic">
+    <div class="container-fluid">
+	    <h1 class="big-heading">COZY SPOTS TO WORK AND SIP </h1>
+	    <div class="row justify-content-center">
+		    <div class="col"><p class="small-heading">Discover a new work home...<br> away from home!</p><br></div>
+	    </div>
+	    <div class="row justify-content-center">
+		    <div class="col"><a class="btn btn-lg btn-info" href="{{ url_for('load_cities') }}">Choose City</a><br><br>
+			    <a class="link-light" href="/suggest">Suggest a work friendly place to add!</a><br><br><br>
+		    </div>
+	    </div>
+	    <div class="row">
+		    <div class="col-md-4 offset-md-4">
+			    Photo by <a class="link-light" href="https://unsplash.com/@norevisions?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">No Revisions</a> on <a class="link-light" href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+		    </div>
+	    </div>
+    </div>
+   </header>
+
+
+{% include "footer.html" %}
